@@ -9,7 +9,7 @@
 int _print_char(va_list vlp, flags_t *flags)
 {
 	char p_char = ' ';
-	int c = va_arg(vlp, int);
+	unsigned int c = va_arg(vlp, int);
 	unsigned int p_count = 0, len = 0;
 
 	/* Case we have a (-) flag print before padding */

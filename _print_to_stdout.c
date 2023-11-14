@@ -25,14 +25,15 @@ int _puts(char *s)
 int _putchar(int c)
 {
 	static int i;
-	static char buf[BUFFER_SIZE];
+	static char buffer[BUFFER_SIZE];
 
-	if (c == BUFFER_FLUSH || i >= BUFFER_SIZE)
+	if (c != BUFFER_FLUSH)
+		buffer[i++] = c;
+	if (i >= BUFFER_SIZE || c == BUFFER_FLUSH)
 	{
-		write(1, buf, i);
+		write(1, buffer, i);
 		i = 0;
 	}
-	if (c != BUFFER_FLUSH)
-		buf[i++] = c;
+
 	return (1);
 }
