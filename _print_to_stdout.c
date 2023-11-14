@@ -7,12 +7,12 @@
  */
 int _puts(char *s)
 {
-	int l = 0;
+	char *start = s;
 
-	while (s[l] != '\0')
-		_putchar(s[l++]);
+	while (*s)
+		_putchar(*s++);
 
-	return (l);
+	return (s - start);
 }
 
 /**
