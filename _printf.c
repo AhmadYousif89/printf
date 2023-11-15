@@ -1,10 +1,9 @@
 #include "main.h"
 
 /**
- * _printf - prints anything
- * @format: the format string
- *
- * Return: number of bytes printed
+ * _printf - Custom Printf
+ * @format: pointer to the given string
+ * Return: the number of characters given to the function
  */
 int _printf(const char *format, ...)
 {
@@ -24,14 +23,14 @@ int _printf(const char *format, ...)
 
 	s = (char *)format;
 	for (; *s; s++)
-	{
+	{/* Skip chars and claculate the length til we get to (%) */
 		init_flags(&flags, vlp);
 		if (*s != '%')
 		{
 			len += _putchar(*s);
 			continue;
 		}
-		start = s;
+		start = s; /* Mark starting position */
 		s++;
 		if (get_flag(s, &flags))
 			s++;

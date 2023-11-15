@@ -31,23 +31,18 @@ int get_flag(char *s, flags_t *flags)
 {
 	int x = 0;
 
-	switch (*s)
+	for (i = 0; s[i] != '\0'; i++)
 	{
-	case '0':
-		x = flags->_zero = 1;
-		break;
-	case '+':
-		x = flags->_plus = 1;
-		break;
-	case '-':
-		x = flags->_minus = 1;
-		break;
-	case ' ':
-		x = flags->_blank = 1;
-		break;
-	case '#':
-		x = flags->_hash = 1;
-		break;
+		if (s[i] == '0')
+			x = flags->_zero = 1;
+		if (s[i] == '+')
+			x = flags->_plus = 1;
+		if (s[i] == '-')
+			x = flags->_minus = 1;
+		if (s[i] == ' ')
+			x = flags->_blank = 1;
+		if (s[i] == '#')
+			x = flags->_hash = 1;
 	}
 
 	return (x);
