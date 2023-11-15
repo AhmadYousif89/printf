@@ -16,23 +16,22 @@ int _puts(char *s)
 }
 
 /**
- * _putchar - writes the character c to stdout
+ * _putchar - Print to stdout using (write)
  * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * Return: 1 On success, -1 On error, and errno is set automatically
  */
 int _putchar(int c)
 {
 	static int i;
-	static char buf[BUFFER_SIZE];
+	static char buffer[BUFFER_SIZE];
 
-	if (c == BUFFER_FLUSH || i >= BUFFER_SIZE)
+	if (c != BUFFER_FLUSH)
+		buffer[i++] = c;
+	if (i >= BUFFER_SIZE || c == BUFFER_FLUSH)
 	{
-		write(1, buf, i);
+		write(1, buffer, i);
 		i = 0;
 	}
-	if (c != BUFFER_FLUSH)
-		buf[i++] = c;
+
 	return (1);
 }
