@@ -1,18 +1,18 @@
 #include "main.h"
 
 /**
- * _puts - Print string to stdout
- * @s: pointer to the string
- * Return: string length
+ * _puts - prints a string with newline
+ * @str: the string to print
+ *
+ * Return: void
  */
-int _puts(char *s)
+int _puts(char *str)
 {
-	char *start = s;
+	char *a = str;
 
-	while (*s)
-		_putchar(*s++);
-
-	return (s - start);
+	while (*str)
+		_putchar(*str++);
+	return (str - a);
 }
 
 /**
@@ -25,15 +25,14 @@ int _puts(char *s)
 int _putchar(int c)
 {
 	static int i;
-	static char buffer[BUFFER_SIZE];
+	static char buf[BUFFER_SIZE];
 
-	if (c != BUFFER_FLUSH)
-		buffer[i++] = c;
-	if (i >= BUFFER_SIZE || c == BUFFER_FLUSH)
+	if (c == BUFFER_FLUSH || i >= BUFFER_SIZE)
 	{
-		write(1, buffer, i);
+		write(1, buf, i);
 		i = 0;
 	}
-
+	if (c != BUFFER_FLUSH)
+		buf[i++] = c;
 	return (1);
 }

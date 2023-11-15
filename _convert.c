@@ -18,12 +18,12 @@ char *convert(long int ln, int base, int args, flags_t *flags)
 
 	UNUSED(flags);
 
-	arr = args & 1 ? "0123456789abcdef" : "0123456789ABCDEF";
 	if (!(args & 2) && ln < 0)
 	{
-		sign = '-';
 		ul = -ln;
+		sign = '-';
 	}
+	arr = args & 1 ? "0123456789abcdef" : "0123456789ABCDEF";
 	p = &buf[49];
 	*p = '\0';
 

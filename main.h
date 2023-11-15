@@ -79,12 +79,6 @@ int _prnt_num_lft_pad(char *, flags_t *);
 int _prnt_num_rht_pad(char *, flags_t *);
 char *convert(long int, int, int, flags_t *);
 
-int _print_S(va_list, flags_t *);
-int _print_adds(va_list, flags_t *);
-int _print_rot13(va_list, flags_t *);
-int _print_binary(va_list, flags_t *);
-int _print_reverse(va_list, flags_t *);
-
 int _isdigit(char c);
 int _strlen(char *s);
 void init_flags(flags_t *, va_list);

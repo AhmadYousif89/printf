@@ -9,16 +9,11 @@ int (*get_matcher(char *s))(va_list, flags_t *)
 {
 	int i = 0;
 	matcher_t m[] = {
-		{"c", _print_char},
 		{"d", _print_digit},
 		{"i", _print_digit},
+		{"c", _print_char},
 		{"s", _print_string},
 		{"%", _print_percent},
-		{"p", _print_adds},
-		{"R", _print_rot13},
-		{"r", _print_reverse},
-		{"b", _print_binary},
-		{"S", _print_S},
 		{NULL, NULL}};
 
 	while (m[i].token != NULL)

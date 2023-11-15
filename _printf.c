@@ -1,9 +1,10 @@
 #include "main.h"
 
 /**
- * _printf - Custom Printf
- * @format: pointer to the given string
- * Return: the number of characters given to the function
+ * _printf - prints anything
+ * @format: the format string
+ *
+ * Return: number of bytes printed
  */
 int _printf(const char *format, ...)
 {
@@ -14,21 +15,20 @@ int _printf(const char *format, ...)
 	va_list(vlp);
 	va_start(vlp, format);
 
-	if (!format
-		|| (format[0] == '%' && !format[1])
-		|| (format[0] == '%' && format[1] == ' ' && !format[2]))
+	if (!format || (format[0] == '%' && !format[1]))
+		return (-1);
+	if (format[0] == '%' && format[1] == ' ' && !format[2])
 		return (-1);
 
-	s = (char *)format;
-	for (; *s; s++)
-	{/* Skip chars and claculate the length til we get to (%) */
+	for (s = (char *)format; *s; s++)
+	{
 		init_flags(&flags, vlp);
 		if (*s != '%')
 		{
 			len += _putchar(*s);
 			continue;
 		}
-		start = s; /* Mark starting position */
+		start = s;
 		s++;
 		if (get_flag(s, &flags))
 			s++;
