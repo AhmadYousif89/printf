@@ -8,16 +8,14 @@
  */
 int get_modifier(char *s, flags_t *flags)
 {
-	int x = 0;
+	int x = 0, i;
 
-	switch (*s)
+	for (i = 0; s[i] != '\0'; i++)
 	{
-	case 'h':
-		x = flags->_short = 1;
-		break;
-	case 'l':
-		x = flags->_long = 1;
-		break;
+		if (s[i] == 'h')
+			x = flags->_short = 1;
+		if (s[i] == 'l')
+			x = flags->_long = 1;
 	}
 
 	return (x);
@@ -31,25 +29,20 @@ int get_modifier(char *s, flags_t *flags)
  */
 int get_flag(char *s, flags_t *flags)
 {
-	int x = 0;
+	int x = 0, i;
 
-	switch (*s)
+	for (i = 0; s[i] != '\0'; i++)
 	{
-	case '0':
-		x = flags->_zero = 1;
-		break;
-	case '+':
-		x = flags->_plus = 1;
-		break;
-	case '-':
-		x = flags->_minus = 1;
-		break;
-	case ' ':
-		x = flags->_blank = 1;
-		break;
-	case '#':
-		x = flags->_hash = 1;
-		break;
+		if (s[i] == '0')
+			x = flags->_zero = 1;
+		if (s[i] == '+')
+			x = flags->_plus = 1;
+		if (s[i] == '-')
+			x = flags->_minus = 1;
+		if (s[i] == ' ')
+			x = flags->_blank = 1;
+		if (s[i] == '#')
+			x = flags->_hash = 1;
 	}
 
 	return (x);
