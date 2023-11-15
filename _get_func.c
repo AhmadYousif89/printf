@@ -29,7 +29,7 @@ int get_modifier(char *s, flags_t *flags)
  */
 int get_flag(char *s, flags_t *flags)
 {
-	int x = 0;
+	int x = 0, i;
 
 	for (i = 0; s[i] != '\0'; i++)
 	{
