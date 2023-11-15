@@ -74,8 +74,6 @@ int get_modifier(char *, flags_t *);
 int get_flag(char *, flags_t *);
 
 int _print_num(char *, flags_t *);
-int _prnt_num_lft_pad(char *, flags_t *);
-int _prnt_num_rht_pad(char *, flags_t *);
 char *convert(long int, int, int, flags_t *);
 
 int _print_S(va_list, flags_t *);

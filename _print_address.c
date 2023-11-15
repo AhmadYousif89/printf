@@ -19,5 +19,6 @@ int _print_adds(va_list vlp, flags_t *flags)
 	*--s = 'x';
 	*--s = '0';
 	n = _print_num(s, flags);
+
 	return (n);
 }

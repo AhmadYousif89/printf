@@ -30,12 +30,12 @@ int _printf(const char *format, ...)
 		start = s; /* Mark starting position */
 		s++;
 
-		while (get_flag(s, &flags))
-			s++; /* If we have a flag move tp next char */
+		if (get_flag(s, &flags))
+			s++;
+		if (get_modifier(s, &flags))
+			s++;
 		s = get_width(s, vlp, &flags);
 		s = get_percision(s, vlp, &flags);
-		if (get_modifier(s, &flags))
-			s++; /* If we have a modifier move tp next char */
 		if (get_matcher(s))
 			len += _print_match_fnc(s, vlp, &flags);
 		else

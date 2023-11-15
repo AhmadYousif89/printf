@@ -22,3 +22,32 @@ int _print_digit(va_list vlp, flags_t *flags)
 
 	return (_print_num(result, flags));
 }
+
+/**
+ * _print_num - helper function for _print_digit
+ * @s: the base number as string
+ * @flags: pointer to flags struct
+ * Return: length
+ */
+int _print_num(char *s, flags_t *flags)
+{
+	unsigned int n = 0, len = _strlen(s);
+	int is_negative = *s == '-' && !flags->_unsign;
+
+	if (*s == '0' && !s[1] && !flags->_percision)
+		s = "";
+	if (is_negative)
+	{
+		s++;
+		len--;
+	}
+	while (flags->_percision != UINT_MAX && flags->_percision > len++)
+		*--s = '0';
+
+	if (is_negative)
+		*--s = '-';
+
+	n += _puts(s);
+
+	return (n);
+}
