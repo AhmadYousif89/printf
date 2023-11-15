@@ -8,14 +8,20 @@
  */
 int _print_char(va_list vlp, flags_t *flags)
 {
-	char pad_char = ' ';
-	unsigned int pad = 1, sum = 0, ch = va_arg(vlp, int);
+	char p_char = ' ';
+	int c = va_arg(vlp, int);
+	unsigned int p_count = 0, len = 0;
 
+	/* Case we have a (-) flag print before padding */
 	if (flags->_minus)
-		sum += _putchar(ch);
-	while (pad++ < flags->_width)
-		sum += _putchar(pad_char);
+		len += _putchar(c);
+
+	while (flags->_width > p_count++)
+		len += _putchar(p_char); /* Print the padding */
+
+	/* Case we don't have a (-) flag print after padding */
 	if (!flags->_minus)
-		sum += _putchar(ch);
-	return (sum);
+		len += _putchar(c);
+
+	return (len);
 }

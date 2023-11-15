@@ -8,7 +8,7 @@
  */
 int _print_percent(va_list vlp, flags_t *flags)
 {
-	(void)vlp;
-	(void)flags;
+	UNUSED(vlp);
+	UNUSED(flags);
 	return (_putchar('%'));
 }

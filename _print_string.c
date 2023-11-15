@@ -8,36 +8,41 @@
  */
 int _print_string(va_list vlp, flags_t *flags)
 {
-	char *str = va_arg(vlp, char *), pad_char = ' ';
-	unsigned int pad = 0, sum = 0, i = 0, j;
+	char p_char = ' ';
+	char *s = va_arg(vlp, char *);
+	unsigned int i, c, len = 0, p_count = 0;
 
-	(void)flags;
+	UNUSED(flags);
 
-	switch ((int)(!str))
-		case 1:
-			str = NULL_STRING;
-
-	j = pad = _strlen(str);
-	if (flags->_percision < pad)
-		j = pad = flags->_percision;
-
+	if (s == NULL)
+		s = "(null)";
+	/* Set (c) and (p_count) = length of (s) */
+	c = p_count = _strlen(s);
+	/* Case the value of percision is greater than the pad count */
+	if (flags->_percision < p_count)
+		c = p_count = flags->_percision;
+	/* Case we have (-) flag then print before padding */
 	if (flags->_minus)
 	{
-		if (flags->_percision != UINT_MAX)
-			for (i = 0; i < pad; i++)
-				sum += _putchar(*str++);
+		if (flags->_percision == UINT_MAX)
+			len += _puts(s);
 		else
-			sum += _puts(str);
+			for (i = 0; i < p_count; i++)
+				len += _putchar(*s++);
 	}
-	while (j++ < flags->_width)
-		sum += _putchar(pad_char);
+
+	while (flags->_width > c++)
+		len += _putchar(p_char); /* Print the padding */
+
+	/* Case the (-) flag isn't present then print after padding */
 	if (!flags->_minus)
 	{
-		if (flags->_percision != UINT_MAX)
-			for (i = 0; i < pad; i++)
-				sum += _putchar(*str++);
+		if (flags->_percision == UINT_MAX)
+			len += _puts(s);
 		else
-			sum += _puts(str);
+			for (i = 0; i < p_count; i++)
+				len += _putchar(*s++);
 	}
-	return (sum);
+
+	return (len);
 }
